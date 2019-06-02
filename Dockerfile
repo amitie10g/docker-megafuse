@@ -8,6 +8,6 @@ RUN apk add --update \
   readline-dev \
   fuse-dev \
   git
-RUN git pull https://github.com/Amitie10g/megafuse.git
+RUN git clone https://github.com/Amitie10g/megafuse.git
 RUN cd megafuse
 RUN make
