@@ -15,8 +15,9 @@ RUN apk add --update-cache \
   freeimage-dev \
   git \
   make
-RUN git clone https://github.com/Amitie10g/megafuse.git
+RUN git clone https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/megafuse
 
 FROM alpine:latest
-COPY --from=builder /megafuse/MegaFuse /usr/bin/megafuse
+
+COPY --from=builder /MegaFuse/MegaFuse /usr/bin/megafuse
