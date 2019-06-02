@@ -1,4 +1,4 @@
-FROM alpine:edge AS builder
+FROM alpine:edge
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
@@ -18,6 +18,18 @@ RUN apk add --update-cache \
 RUN git clone --branch=alpine https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
 
-FROM alpine:latest
+FROM alpine:edge
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 
-COPY --from=builder /MegaFuse/MegaFuse /usr/bin/megafuse
+RUN apk del \
+  g++ \
+  crypto++-dev \
+  musl-dev \
+  curl-dev \
+  db-dev \
+  readline-dev \
+  fuse-dev \
+  freeimage-dev \
+  git \
+  make
