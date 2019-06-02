@@ -16,7 +16,7 @@ RUN apk add --update-cache \
   git \
   make
 RUN git clone https://github.com/Amitie10g/MegaFuse.git
-RUN make --directory=/megafuse
+RUN make --directory=/MegaFuse
 
 FROM alpine:latest
 
