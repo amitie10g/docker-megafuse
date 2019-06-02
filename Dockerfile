@@ -23,7 +23,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 
 FROM alpine:edge
 RUN apk add \
-  crypto++
+  crypto++ \
   fuse
   
 COPY --from=builder /MegaFuse/MegaFuse /usr/bin/megafuse
