@@ -1,6 +1,6 @@
 FROM alpine:edge AS builder
 
-RUN apk add --no-cache \
+RUN apk add --update \
   gcc \
   musl-dev \
   curl-dev \
