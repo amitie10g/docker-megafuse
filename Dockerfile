@@ -5,7 +5,6 @@ RUN apk add --update \
   musl-dev \
   curl-dev \
   db-dev \
-  freeimage-dev \
   readline-dev \
   fuse-dev \
   git
