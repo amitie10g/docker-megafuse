@@ -15,7 +15,7 @@ RUN apk add --update-cache \
   freeimage-dev \
   git \
   make
-RUN git clone ..branch=alpine https://github.com/Amitie10g/MegaFuse.git
+RUN git clone --branch=alpine https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
 
 FROM alpine:latest
