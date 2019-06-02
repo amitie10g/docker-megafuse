@@ -7,7 +7,8 @@ RUN apk add --update \
   db-dev \
   readline-dev \
   fuse-dev \
-  git
+  git \
+  make
 RUN git clone https://github.com/Amitie10g/megafuse.git
 RUN cd megafuse
 RUN make
