@@ -18,9 +18,6 @@ RUN apk add --update-cache \
 RUN git clone --branch=alpine https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
-
 FROM alpine:edge
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
