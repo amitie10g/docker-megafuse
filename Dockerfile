@@ -26,6 +26,10 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 RUN apk update
 RUN apk add \
   crypto++ \
+  db-c++ \
+  libcurl \
   fuse
+  
+RUN ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
   
 COPY --from=builder /MegaFuse/MegaFuse /usr/bin/megafuse
