@@ -32,11 +32,15 @@ CACHEPATH = /tmp
 
 EOF
 
-    chown abc:abc /config/megafuse.conf
+    chown -R abc:abc \
+      /config \
+      /mega
     
-    megafuse -c /config/megafuse.conf
+    s6-setuidgid abc megafuse -c /config/megafuse.conf
 
   else
-    echo "Fatal: No config file found. Please run 'start.sh -i' or provide the required parameters from the envirnment variables."
+    echo "Fatal: No config file found. Please run 'start.sh -i' or provide the required parameters"
+    echo "from the envirnment variables in order to get a working config file."
+    exit 1
   fi
 fi
