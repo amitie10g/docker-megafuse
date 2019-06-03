@@ -2,7 +2,8 @@
 
 mkdir /mega
 
-# Write the config file from environment variables
+# Write the config file from environment variables. Thias, for the issue with the program
+# when fails when prompting for the user and password under Alpine.
 if [ ! -f /config/megafuse.conf ]; then
   if [ "$1" == "-i" ]; then
     [ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
