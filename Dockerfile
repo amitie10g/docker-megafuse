@@ -34,6 +34,4 @@ RUN apk add \
 RUN ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
   
 COPY --from=builder /MegaFuse/MegaFuse /usr/bin/megafuse
-COPY /start.sh /start.sh
-
-CMD [ "/start.sh" ]
+COPY /root /
