@@ -5,7 +5,8 @@
 if [ ! -f /config/megafuse.conf ]; then
   if [ "$1" == "-i" ]; then
     [ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
-    [ -z "$PASSWORD" ] && read -rp "Password: " PASSWORD || exit 1
+    [ -z "$PASSWORD" ] && read -rsp "Password: " PASSWORD || exit 1
+    echo "Create your appkey at https://mega.co.nz/#sdk"
     [ -z "$APPKEY" ] && read   -rp "App  key: " APPKEY || exit 1
 
     cat << EOF > /config/megafuse.conf
@@ -17,9 +18,9 @@ if [ ! -f /config/megafuse.conf ]; then
 USERNAME = $USERNAME
 PASSWORD = $PASSWORD
 
-##### create your appkey at https://mega.co.nz/#sdk
+##### create your own appkey at https://mega.co.nz/#sdk
 
-APPKEY = $APPKEY
+APPKEY = k9ZVTIpA
 
 #### you can specify a mountpoint here, only absolute paths are supported.
 
