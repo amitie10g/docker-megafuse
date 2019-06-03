@@ -28,6 +28,7 @@ RUN apk add \
   crypto++ \
   db-c++ \
   libcurl \
+  freeimage \
   fuse
   
 RUN ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
