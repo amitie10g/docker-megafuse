@@ -1,7 +1,5 @@
 #!/bin/bash
 
-mkdir /mega
-
 # Write the config file from environment variables. Thias, for the issue with the program
 # when fails when prompting for the user and password under Alpine.
 if [ ! -f /config/megafuse.conf ]; then
@@ -33,6 +31,7 @@ CACHEPATH = /tmp
 
 EOF
 
+    mkdir /mega
     chown -R abc:abc \
       /config \
       /mega
@@ -42,5 +41,7 @@ EOF
   else
     echo "Fatal: No config file found. Please run '/start.sh -i' or provide the required parameters"
     echo "from the envirnment variables in order to get a working config file."
+    # Leave commented in order to keep the container running and allow to run '/start.sh -i'
+    #exit 1
   fi
 fi
