@@ -40,8 +40,7 @@ EOF
     s6-setuidgid abc megafuse -c /config/megafuse.conf
 
   else
-    echo "Fatal: No config file found. Please run 'start.sh -i' or provide the required parameters"
+    echo "Fatal: No config file found. Please run '/start.sh -i' or provide the required parameters"
     echo "from the envirnment variables in order to get a working config file."
-    exit 1
   fi
 fi
