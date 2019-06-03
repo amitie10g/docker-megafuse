@@ -1,13 +1,13 @@
 #!/bin/bash
 
-mkdir /tmp
+mkdir /mega
 
 # Write the config file from environment variables
 if [ ! -f /config/megafuse.conf ]; then
-  if [ $1 == "-i" ]; then
-    [ -z "$USERNAME" ] && read -p "Username: " USERNAME || exit 1
-    [ -z "$PASSWORD" ] && read -p "Password: " PASSWORD || exit 1
-    [ -z "$APPKEY" ] && read   -p "App  key: " APPKEY || exit 1
+  if [ "$1" == "-i" ]; then
+    [ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
+    [ -z "$PASSWORD" ] && read -rp "Password: " PASSWORD || exit 1
+    [ -z "$APPKEY" ] && read   -rp "App  key: " APPKEY || exit 1
 
     cat << EOF > megafuse.conf
 ###################
