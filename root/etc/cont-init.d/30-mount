@@ -8,7 +8,7 @@ if [ ! -f /config/megafuse.conf ]; then
     [ -z "$PASSWORD" ] && read -rp "Password: " PASSWORD || exit 1
     [ -z "$APPKEY" ] && read   -rp "App  key: " APPKEY || exit 1
 
-    cat << EOF > megafuse.conf
+    cat << EOF > /config/megafuse.conf
 ###################
 # Config file, please remove the # in front of the variable when you edit it: "#USERNAME" --> "USERNAME"
 ###################
