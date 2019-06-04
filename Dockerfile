@@ -15,10 +15,10 @@ RUN apk add --update-cache \
   fuse-dev \
   freeimage-dev \
   git \
-  make
+  make \
+  pkgconf
 RUN git clone --branch=testing https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
-RUN strip /MegaFuse/MegaFuse
 
 FROM lsiobase/alpine:3.9
 
