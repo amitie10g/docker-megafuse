@@ -1,7 +1,7 @@
 FROM lsiobase/alpine:3.9 AS builder
 
-	RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
-	&& apk update
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories \
+	&& apk update \
 	&& apk add -–no-cache --virtual .build-deps \
 		g++ \
 		crypto++-dev \
