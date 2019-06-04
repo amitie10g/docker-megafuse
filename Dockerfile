@@ -27,12 +27,15 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 
 RUN apk update
 RUN apk add \
-  crypto++ \
-  db-c++ \
+  libcrypto1.1 \
   libcurl \
-  freeimage \
   fuse
 RUN ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
   
 COPY --from=builder /MegaFuse/MegaFuse /usr/bin/megafuse
+COPY --from=builder /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
+COPY --from=builder /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
+COPY --from=builder /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
+COPY --from=builder /usr/lib/libdb_cxx-5.3.so /usr/lib/libdb_cxx-5.3.so
+COPY --from=builder /lib/libcrypto.so.1.1 /lib/libcrypto.so.1.1
 COPY /root /
