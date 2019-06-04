@@ -14,7 +14,6 @@ RUN apk add --update-cache \
   fuse-dev \
   freeimage-dev \
   git \
-  pkgconf \
   make
 RUN git clone https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
