@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir /mega
+
 # Write the config file from environment variables. Thias, for the issue with the program
 # when fails when prompting for the user and password under Alpine.
 if [ ! -f /config/megafuse.conf ]; then
@@ -32,10 +34,10 @@ CACHEPATH = /cache
 
 EOF
 
-    mkdir /mega
     chown -R abc:abc \
       /config \
       /mega
+      /cache
     
     s6-setuidgid abc megafuse -c /config/megafuse.conf &
 
