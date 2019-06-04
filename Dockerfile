@@ -20,7 +20,7 @@ RUN git clone https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
 RUN strip /MegaFuse/MegaFuse
 
-FROM alpine:edge
+FROM lsiobase/alpine:3.9
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
@@ -32,7 +32,6 @@ RUN apk add \
   libcurl \
   freeimage \
   fuse \
-  s6
   
 RUN ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
   
