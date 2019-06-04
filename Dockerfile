@@ -4,6 +4,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repo
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 
 RUN apk update
+RUN apk add --update-cache pkgconf
 RUN apk add --update-cache \
   g++ \
   crypto++-dev \
@@ -14,7 +15,6 @@ RUN apk add --update-cache \
   fuse-dev \
   freeimage-dev \
   git \
-  pkgconf \
   make
 RUN git clone https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
