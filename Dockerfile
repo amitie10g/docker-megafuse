@@ -17,6 +17,7 @@ RUN apk add --update-cache \
   make
 RUN git clone https://github.com/Amitie10g/MegaFuse.git
 RUN make --directory=/MegaFuse
+RUN strip /MegaFuse/MegaFuse
 
 FROM lsiobase/alpine:3.9
 
