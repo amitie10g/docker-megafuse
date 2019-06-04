@@ -2,7 +2,7 @@ FROM lsiobase/alpine:3.9
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 RUN apk update
-RUN apk -–no-cache --virtual .build-deps add \
+RUN apk add --no-cache --virtual .build-deps \
     g++ \
     crypto++-dev \
     musl-dev \
