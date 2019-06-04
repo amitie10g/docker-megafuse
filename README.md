@@ -41,5 +41,5 @@ amitie10g/megafuse:latest
 ```
 Note: `--privileged` is not longer required since Linux 4.18
 
-### Running for first time or to re-generate the config file
+### Running for first time or to re-generate the config file (you need to delete the config file first)
 `sudo docker exec -i -t megafuse /etc/cont-init.d/30-mount -i`
