@@ -38,4 +38,5 @@ COPY --from=builder /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
 COPY --from=builder /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
 COPY --from=builder /usr/lib/libdb_cxx-5.3.so /usr/lib/libdb_cxx-5.3.so
 COPY --from=builder /lib/libcrypto.so.1.1 /lib/libcrypto.so.1.1
+COPY --from=builder /usr/lib/libfreeimage.so.3 /usr/lib/libfreeimage.so.3
 COPY /root /
