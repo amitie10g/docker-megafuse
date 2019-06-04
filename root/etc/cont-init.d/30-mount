@@ -1,21 +1,25 @@
 #!/bin/bash
 
 mkdir /mega
+chown abc:abc \
+	/cache \
+	/config \
+	/config/megafuse.conf
+	/mega
 
 # Write the config file from environment variables. Thias, for the issue with the program
 # when fails when prompting for the user and password under Alpine.
 if [ ! -f /config/megafuse.conf ]; then
-  if [ "$1" == "-i" ]; then
-    [ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
-    [ -z "$PASSWORD" ] && read -rsp "Password: " PASSWORD || exit 1
-    echo "Create your appkey at https://mega.co.nz/#sdk"
-    [ -z "$APPKEY" ] && read   -rp "App  key: " APPKEY || exit 1
+	if [ "$1" == "-i" ]; then
+		[ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
+		[ -z "$PASSWORD" ] && read -rsp "Password: " PASSWORD || exit 1
+		echo "Create your appkey at https://mega.co.nz/#sdk"
+		[ -z "$APPKEY" ] && read   -rp "App  key: " APPKEY || exit 1
 
-    cat << EOF > /config/megafuse.conf
+		cat << EOF > /config/megafuse.conf
 ###################
 # Config file, please remove the # in front of the variable when you edit it: "#USERNAME" --> "USERNAME"
 ###################
-
 
 USERNAME = $USERNAME
 PASSWORD = $PASSWORD
@@ -33,19 +37,11 @@ MOUNTPOINT = /mega
 CACHEPATH = /cache
 
 EOF
-
-    chown -R abc:abc \
-      /config
-    chown abc:abc \
-      /mega \
-      /cache
-    
-    s6-setuidgid abc megafuse -c /config/megafuse.conf &
-
-  else
-    echo "Fatal: No config file found. Please run '/etc/cont-init.d/30-mount -i' or provide the required parameters"
-    echo "from the envirnment variables in order to get a working config file."
-    # Leave commented in order to keep the container running and allow to run '/start.sh -i'
-    #exit 1
-  fi
+		s6-setuidgid abc megafuse -c /config/megafuse.conf &
+	else
+		echo "Fatal: No config file found. Please run '/etc/cont-init.d/30-mount -i' or provide the required parameters"
+		echo "from the envirnment variables in order to get a working config file."
+		# Leave commented in order to keep the container running and allow to run '/start.sh -i'
+		#exit 1
+	fi
 fi
