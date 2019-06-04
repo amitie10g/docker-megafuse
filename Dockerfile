@@ -2,7 +2,7 @@ FROM lsiobase/alpine:3.9
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 RUN apk update
-RUN apk add -–no-cache --virtual .build-deps \
+RUN apk -–no-cache --virtual .build-deps add \
     g++ \
     crypto++-dev \
     musl-dev \
@@ -17,7 +17,7 @@ RUN apk add -–no-cache --virtual .build-deps \
 RUN git clone --branch=testing https://github.com/Amitie10g/MegaFuse.git /tmp/MegaFuse
 RUN make --directory=/tmp/MegaFuse
 RUN apk del .build-deps
-RUN apk -–no-cache add
+RUN apk -–no-cache add \
     crypto++ \
     libcrypto1.1 \
     libcurl \
