@@ -27,7 +27,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 
 RUN apk update
 RUN apk add \
-  libcrypto1.1 \
+  s6 \
   libcurl \
   fuse
   
