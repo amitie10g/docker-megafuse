@@ -1,8 +1,8 @@
 FROM lsiobase/alpine:3.9 AS builder
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories \
-  && apk update \
-  && apk add -–no-cache --virtual .build-deps \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
+   apk update && \
+   apk add -–no-cache --virtual .build-deps \
     g++ \
     crypto++-dev \
     musl-dev \
@@ -22,7 +22,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     libcrypto1.1 \
     libcurl \
     freeimage \
-    fuse \
-  && ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
+    fuse && \
+  ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
 COPY --from=builder /MegaFuse/MegaFuse /usr/bin/megafuse
 COPY /root /
