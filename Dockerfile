@@ -24,6 +24,6 @@ RUN apk --no-cache add \
     freeimage \
     fuse
 RUN ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
-COPY /tmp/MegaFuse/MegaFuse /usr/bin/megafuse
+RUN cp /tmp/MegaFuse/MegaFuse /usr/bin/megafuse
 RUN rm -fr /tmp
 COPY /root /
