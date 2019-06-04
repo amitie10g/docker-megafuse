@@ -1,6 +1,5 @@
 FROM lsiobase/alpine:3.9 AS builder
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 
 RUN apk update
@@ -22,7 +21,6 @@ RUN make --directory=/MegaFuse
 
 FROM lsiobase/alpine:3.9
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 
 RUN apk update
