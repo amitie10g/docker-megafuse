@@ -35,8 +35,9 @@ CACHEPATH = /cache
 EOF
 
     chown -R abc:abc \
-      /config \
-      /mega
+      /config
+    chown \
+      /mega \
       /cache
     
     s6-setuidgid abc megafuse -c /config/megafuse.conf &
