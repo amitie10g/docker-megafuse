@@ -44,3 +44,22 @@ Note: `--privileged` is not longer required since Linux 4.18
 
 ### Running for first time or to re-generate the config file (you need to delete the config file first)
 `docker exec -i -t megafuse /etc/cont-init.d/30-mount -f`
+
+## Integrating in other Alpine-based images
+```
+FROM amitie10g/megafuse AS builder
+
+FROM <your image>
+
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
+    apk --no-cache add \
+      crypto++ \
+      libcrypto1.1 \
+      libcurl \
+      freeimage \
+      db-c++ \
+      fuse \
+      <your packages>
+      ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
+COPY --from=builder /usr/bin/megafise /usr/bin/megafuse
+```
