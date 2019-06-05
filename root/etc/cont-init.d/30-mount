@@ -32,7 +32,7 @@ MOUNTPOINT = /mega
 
 #### path for the cached files; /tmp is the default, change it if your /tmp is small
 
-CACHEPATH = /tmp
+CACHEPATH = /cache
 
 EOF
 
