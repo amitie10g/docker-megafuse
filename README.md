@@ -29,17 +29,18 @@ PGID=$(id -g)
 
 mkdir CONF_PATH
 
-docker run -t -i -d \
+sudo docker run -t -i -d \
 --name=megafuse \
 -e PUID=$PUID \
 -e PGID=$PGID \
 -v $CONF_PATH:/config \
+-v $CACHE_PATH:/cache \
 --device=/dev/fuse \
 --restart no \
---privileged
+--privileged \
 amitie10g/megafuse:latest
 ```
 Note: `--privileged` is not longer required since Linux 4.18
 
 ### Running for first time or to re-generate the config file (you need to delete the config file first)
-`sudo docker exec -i -t megafuse /etc/cont-init.d/30-mount -i`
+`docker exec -i -t megafuse /etc/cont-init.d/30-mount -f`
