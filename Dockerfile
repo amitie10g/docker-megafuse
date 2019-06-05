@@ -22,6 +22,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       libcrypto1.1 \
       libcurl \
       freeimage \
+      db-c++ \
       fuse && \
     ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6 && \
     cp /tmp/MegaFuse/MegaFuse /usr/bin/megafuse && \
