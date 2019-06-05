@@ -32,7 +32,7 @@ MOUNTPOINT = /mega
 
 #### path for the cached files; /tmp is the default, change it if your /tmp is small
 
-CACHEPATH = /cache
+CACHEPATH = /tmp
 
 EOF
 
@@ -40,7 +40,7 @@ EOF
 
 start(){
 	echo "Starting MegaFuse..." 2>&1
-	s6-setuidgid abc megafuse -c /config/megafuse.conf &
+	s6-setuidgid abc megafuse -c /config/megafuse.conf < /dev/null &
 }
 
 if [ -f /config/megafuse.conf ]; then
