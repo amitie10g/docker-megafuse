@@ -40,20 +40,22 @@ EOF
 
 if [ -f /config/megafuse.conf ]; then
 	if [ "$1" == "-f" ]; then
-		echo "Notice: regenerating configuration..."
+		echo "Notice: regenerating configuration." 2>&1
 		genconfig
 	else
-		echo "Notice: using existing configuration..."
+		echo "Notice: using existing configuration." 2>&1
 	fi
 	chown abc:abc /config/megafuse.conf
+	
+	echo "Starting MegaFuse..." 2>&1
 	s6-setuidgid abc megafuse -c /config/megafuse.conf &
 else
 	if [ "$1" == "-f" ]; then
-		echo "Notice: regenerating configuration..."
+		echo "Notice: regenerating configuration." 2>&1
 		genconfig
 	else
 		echo "Fatal: No config file found. Please run '/etc/cont-init.d/30-mount -f' or provide the required parameters"
-		echo "from the envirnment variables in order to get a working config file."
+		echo "from the envirnment variables in order to get a working config file." 2>&1
 		# Leave commented in order to keep the container running and allow to run '/start.sh -i'
 		#exit 1
 	fi
