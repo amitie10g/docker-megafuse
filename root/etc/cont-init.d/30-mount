@@ -36,6 +36,7 @@ MOUNTPOINT = /mega
 CACHEPATH = /cache
 
 EOF
+		echo "Starting MegaFuse..."
 		s6-setuidgid abc megafuse -c /config/megafuse.conf &
 	else
 		echo "Fatal: No config file found. Please run '/etc/cont-init.d/30-mount -i' or provide the required parameters"
