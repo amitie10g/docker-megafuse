@@ -53,7 +53,7 @@ if [ -f /config/megafuse.conf ]; then
 	chown abc:abc /config/megafuse.conf
 	start
 else
-	if [ "$1" == "-f" ]; then
+	if [ "$1" == "-f" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPKEY" ]; then
 		echo "Notice: regenerating configuration." 2>&1
 		genconfig
 		chown abc:abc /config/megafuse.conf
