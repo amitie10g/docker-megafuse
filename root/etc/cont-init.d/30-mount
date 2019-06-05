@@ -52,7 +52,7 @@ else
 		echo "Notice: regenerating configuration..."
 		genconfig
 	else
-		echo "Fatal: No config file found. Please run '/etc/cont-init.d/30-mount -i' or provide the required parameters"
+		echo "Fatal: No config file found. Please run '/etc/cont-init.d/30-mount -f' or provide the required parameters"
 		echo "from the envirnment variables in order to get a working config file."
 		# Leave commented in order to keep the container running and allow to run '/start.sh -i'
 		#exit 1
