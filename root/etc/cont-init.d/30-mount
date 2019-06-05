@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir /mega
+mkdir -p /mega
 chown abc:abc \
 	/cache \
 	/config \
