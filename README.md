@@ -1,4 +1,4 @@
-# WORK IN PROGRESS!!!
+# docker-megafuse
 This is an attemp to build a Docker image from the [Matteo Serva's]() [MegaFuse](https://github.com/matteoserva/MegaFuse) project, using the [Linux Server.io's](https://github.com/linuxserver) [Alpine Linux](https://hub.docker.com/r/lsiobase/alpine/) base image. This is amimed mainly to be integrated in other projects.
 
 ## What does?
