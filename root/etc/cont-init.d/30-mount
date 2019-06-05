@@ -8,7 +8,7 @@ chown abc:abc \
 	
 genconfig(){
 
-	# This is a workarround for the filing prompt under Alpine
+	# This is a workarround for the filling prompt under Alpine
 	[ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
 	[ -z "$PASSWORD" ] && read -rsp "Password: " PASSWORD || exit 1
 	echo "Create your appkey at https://mega.co.nz/#sdk"
