@@ -63,4 +63,4 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
 COPY --from=builder /usr/bin/megafise /usr/bin/megafuse
 ```
-Be sure your image has `s6-overlay` and the user `abc` already created. Otherwise, you need to do that at the Dockerfile.
+Be sure your image has `s6-overlay` and the user `abc` already created. Otherwise, you need to do that at the Dockerfile. The [Linux Server.io's](https://github.com/linuxserver) [Alpine Linux](https://hub.docker.com/r/lsiobase/alpine/) base image contains everything to run this image properly, so, it is a good image to use.
