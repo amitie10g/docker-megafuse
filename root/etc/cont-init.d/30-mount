@@ -4,7 +4,6 @@ mkdir /mega
 chown abc:abc \
 	/cache \
 	/config \
-	/config/megafuse.conf
 	/mega
 
 # Write the config file from environment variables. Thias, for the issue with the program
