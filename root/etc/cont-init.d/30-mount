@@ -40,7 +40,7 @@ EOF
 
 start(){
 	echo "Starting MegaFuse..." 2>&1
-	s6-setuidgid abc megafuse -c /config/megafuse.conf < /dev/null &
+	env HOME=/config s6-setuidgid abc megafuse -c /config/megafuse.conf < /dev/null &
 }
 
 if [ -f /config/megafuse.conf ]; then
