@@ -24,7 +24,7 @@ PASSWORD = $PASSWORD
 
 ##### create your own appkey at https://mega.co.nz/#sdk
 
-APPKEY = k9ZVTIpA
+APPKEY = $APPKEY
 
 #### you can specify a mountpoint here, only absolute paths are supported.
 
