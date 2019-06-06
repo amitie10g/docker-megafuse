@@ -38,14 +38,9 @@ Note: `--privileged` is not longer required since Linux 4.18. However, I tested 
 
 ## Inregrating with your own Alpine-based images
 ```
-FROM amitie10g/megafuse:binary AS builder
-COPY --from=builder /bin/megasimplesync /bin/megasimplesync
-COPY --from=builder /bin/megacli /bin/megacli
-COPY --from=builder /bin/megafuse /bin/megafuse
-COPY --from=builder /lib/libmega.la /lib/libmega.la
-COPY --from=builder /lib/libmega.so.30503.0.0 /lib/libmega.so.30503.0.0
-
 FROM <yourimage>
+
+COPY --from=amitie10g/megafuse:binary / /
 RUN apk --no-cache add \
       crypto++ \
       libcrypto1.1 \
@@ -58,6 +53,5 @@ RUN apk --no-cache add \
     ln -s libmega.so.30503.0.0 /lib/libmega.so && \
     ln -s libmega.so.30503.0.0 /lib/libmega.so.30503
 ``` 
-
 ## Licensing
 This source tree has been released to the **Public domain** (Unlicense).
