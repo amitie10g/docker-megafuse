@@ -22,7 +22,10 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     git clone --depth=1 https://github.com/meganz/sdk.git /tmp/megafuse && \
     cd /tmp/megafuse && \
     ./autogen.sh && \
-    ./configure CFLAGS="-g -Os -s -march=native -pipe" --with-fuse && \
+    ./configure \
+      CFLAGS="-g -Os -s -march=native -pipe" \
+      CXXFLAGS="-g -Os -s -march=native -pipe" \
+      --with-fuse && \
     make && \
     make DESTDIR=/tmp install
 
