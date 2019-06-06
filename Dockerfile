@@ -4,6 +4,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     apk update && \
     apk add --no-cache \
       git \
+      file \
       autoconf \
       automake \
       libtool \
