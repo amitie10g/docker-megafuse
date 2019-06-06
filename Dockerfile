@@ -40,5 +40,5 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
     
 COPY /root /
-COPY --from=builder /tmp/bin/* /bin
-COPY --from=builder /tmp/lib/* /lib
+COPY --from=builder /tmp/bin/* /bin/
+COPY --from=builder /tmp/lib/* /lib/
