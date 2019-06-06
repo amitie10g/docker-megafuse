@@ -45,7 +45,7 @@ Note: `--privileged` is not longer required since Linux 4.18
 ### Running for first time or to re-generate the config file (you need to delete the config file first)
 `docker exec -i -t megafuse /etc/cont-init.d/30-mount -f`
 
-Optionally, you could pass `$USERNAME`, `$PASSWORD` and `$APPKEY` as envirnment variables at startup to bypass the prompting (this means you would expose private data, namely the plain-text password, beware those risks).
+Optionally, you could pass `$USERNAME`, `$PASSWORD` and `$APPKEY` as environment variables at startup to bypass the prompting (this means you would expose private data, namely the plain-text password, beware those risks).
 
 ## Integrating in other Alpine-based images
 ```
