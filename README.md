@@ -29,8 +29,7 @@ PGID=$(id -g)
 CONF_PATH=$HOME/config
 CACHE_PATH=$HOME/cache
 
-mkdir $CONF_PATH
-mkdir $CACHE_PATH
+mkdir -p $CONF_PATH $CACHE_PATH
 
 docker run -t -i -d \
 --name=megafuse \
