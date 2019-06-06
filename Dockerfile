@@ -46,5 +46,5 @@ COPY --from=builder /tmp/bin/megafuse /bin/megafuse
 COPY --from=builder /tmp/lib/libmega.la /lib/libmega.la
 COPY --from=builder /tmp/lib/libmega.so.30503.0.0 /lib/libmega.so.30503.0.0
 
-RUN ln -s libmega.so /lib/libmega.so.30503.0.0 && \
-    ln -s libmega.so.30503 /lib/libmega.so.30503.0.0
+RUN ln -s libmega.so.30503.0.0 /lib/libmega.so && \
+    ln -s libmega.so.30503.0.0 /lib/libmega.so.30503
