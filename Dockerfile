@@ -1,44 +1,30 @@
-FROM frolvlad/alpine-gxx AS builder
-
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
-    apk update && \
-    apk add --no-cache \
-      git \
-      doxygen \
-      file \
-      autoconf \
-      automake \
-      libtool \
-      crypto++-dev \
-      zlib-dev \
-      sqlite-dev \
-      libressl-dev \
-      c-ares-dev \
-      curl-dev \
-      freeimage-dev \
-      readline-dev \
-      make \
-      fuse-dev && \
-    git clone --depth=1 https://github.com/meganz/sdk.git /tmp/megafuse && \
-    cd /tmp/megafuse && \
-    ./autogen.sh && \
-    ./configure --with-fuse && \
-    make && \
-    make DESTDIR=/tmp install
-
 FROM lsiobase/alpine:3.9
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
     apk update && \
-    apk add --no-cache \
-      fuse \
-      c-ares \
+    apk add --no-cache --virtual .build-deps \
+      g++ \
+      crypto++-dev \
+      musl-dev \
+      curl-dev \
+      db-dev \
+      readline-dev \
+      fuse-dev \
+      freeimage-dev \
+      git \
+      make \
+      pkgconf && \
+    git clone https://github.com/Amitie10g/MegaFuse.git /tmp/MegaFuse && \
+    make --directory=/tmp/MegaFuse && \
+    apk del .build-deps && \
+    apk --no-cache add \
+      crypto++ \
+      libcrypto1.1 \
       libcurl \
-      sqlite-libs \
       freeimage \
-      crypto++ && \
-      ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
-    
+      db-c++ \
+      fuse && \
+    ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6 && \
+    cp /tmp/MegaFuse/MegaFuse /usr/bin/megafuse && \
+    rm -fr /tmp
 COPY /root /
-COPY --from=builder /tmp/bin/* /bin
-COPY --from=builder /tmp/lib/* /lib
