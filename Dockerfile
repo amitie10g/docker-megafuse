@@ -18,7 +18,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 
 FROM lsiobase/alpine:3.9
 
-RUN apk --no-cache add \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
+    apk update && \
+    apk --no-cache add \
       crypto++ \
       libcrypto1.1 \
       libcurl \
