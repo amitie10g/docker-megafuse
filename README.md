@@ -1,6 +1,6 @@
 # docker-megafuse
 
-This is an attemp to build an Alpine-based Docker image for access MEGA via FUSE, using its SDK
+This is an attemp to build an Alpine-based Docker image for access MEGA via FUSE, using the Matteo Serva's MegaFuse project.
 
 ## Instructions
 
