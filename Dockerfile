@@ -1,13 +1,12 @@
-FROM lsiobase/alpine:3.9 AS builder
+FROM frolvlad/alpine-gxx AS builder
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
     apk update && \
-    apk add --no-cache --virtual .build-deps \
+    apk add --no-cache \
       git \
       autoconf \
       automake \
       libtool \
-      g++ \
       crypto++-dev \
       zlib-dev \
       sqlite-dev \
@@ -23,15 +22,16 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     ./autogen.sh && \
     ./configure --with-fuse && \
     make && \
-    make DESTDIR=/tmp install && \
-    cd / && \
-    rm -fr /tmp/megafuse && \
-    apk del .build-deps && \
-    apk add --no-cache \
-    fuse \
-    c-ares \
-    libcurl \
-    sqlite-libs \
-    freeimage
+    make DESTDIR=/tmp install
+
+FROM lsiobase/alpine:3.9
+
+RUN add --no-cache \
+      fuse \
+      c-ares \
+      libcurl \
+      sqlite-libs \
+      freeimage
     
 COPY /root /
+COPY --from=builder /tmp/bin /tmp/lib /
