@@ -1,6 +1,8 @@
 # docker-megafuse
 
-This is an attemp to build an Alpine-based Docker image for access MEGA via FUSE, using its SDK
+This is an attemp to build an Alpine-based Docker image for access MEGA via FUSE, using its SDK.
+
+An image based on the Matteo Serva's project is also available at a dedicated branch.
 
 ## Instructions
 
@@ -33,6 +35,23 @@ docker run -t -i -d \
 amitie10g/megafuse:latest
 ```
 Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
+
+## Inregrating with your own Alpine-based images
+```
+FROM amitie10g/megafuse:binaryonly AS builder
+
+FROM <yourimage>
+RUN apk --no-cache add \
+      crypto++ \
+      libcrypto1.1 \
+      libcurl \
+      freeimage \
+      db-c++ \
+      fuse \
+      <your packages> && \
+    ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
+COPY --from=builder /usr/bin/megafuse /usr/bin/megafuse 
+``` 
 
 ## Licensing
 This source tree has been released to the **Public domain** (Unlicense).
