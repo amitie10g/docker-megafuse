@@ -5,7 +5,7 @@ This is an attemp to build an Alpine-based Docker image for access MEGA via FUSE
 ## Instructions
 
 ### Pull from Docker Hub
-docker pull amitie10g/megafuse:alpine
+docker pull amitie10g/megafuse:latest
 
 ### Running
 ```
