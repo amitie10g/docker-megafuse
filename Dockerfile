@@ -41,4 +41,4 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     
 COPY /root /
 COPY --from=builder /tmp/bin/* /bin
-COPY --from=builder /tmp/lib/* /bin
+COPY --from=builder /tmp/lib/* /lib
