@@ -36,7 +36,7 @@ Note: `--privileged` is not longer required since Linux 4.18. However, I tested 
 
 ## Inregrating with your own Alpine-based images
 ```
-FROM amitie10g/megafuse:binaryonly AS builder
+FROM amitie10g/megafuse:matteoserva-binaryonly AS builder
 
 FROM <yourimage>
 RUN apk --no-cache add \
