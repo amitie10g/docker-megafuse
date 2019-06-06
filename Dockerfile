@@ -14,7 +14,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       git \
       make \
       pkgconf && \
-    git clone --branch=testing https://github.com/Amitie10g/MegaFuse.git /tmp/MegaFuse && \
+    git clone https://github.com/Amitie10g/MegaFuse.git /tmp/MegaFuse && \
     make --directory=/tmp/MegaFuse && \
     apk del .build-deps && \
     apk --no-cache add \
