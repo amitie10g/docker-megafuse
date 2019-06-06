@@ -33,3 +33,6 @@ docker run -t -i -d \
 amitie10g/megafuse:latest
 ```
 Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
+
+## Licensing
+This source tree has been released to the **Public domain**.
