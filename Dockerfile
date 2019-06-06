@@ -22,6 +22,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     cd /tmp/megafuse && \
     ./autogen.sh && \
     ./configure --with-fuse && \
+    make && \
     make install && \
     rm -fr /tmp/megafuse && \
     apk del .build-deps && \
