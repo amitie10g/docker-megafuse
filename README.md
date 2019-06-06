@@ -23,13 +23,16 @@ docker pull amitie10g/megafuse:alpine
 
 ### Running
 ```
-CONF_PATH=$HOME/config
 PUID=$(id -u)
 PGID=$(id -g)
 
-mkdir CONF_PATH
+CONF_PATH=$HOME/config
+CACHE_PATH=$HOME/cache
 
-sudo docker run -t -i -d \
+mkdir $CONF_PATH
+mkdir $CACHE_PATH
+
+docker run -t -i -d \
 --name=megafuse \
 -e PUID=$PUID \
 -e PGID=$PGID \
