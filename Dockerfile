@@ -1,9 +1,8 @@
-FROM lsiobase/alpine:3.9
+FROM frolvlad/alpine-gxx AS builder
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
     apk update && \
     apk add --no-cache --virtual .build-deps \
-      g++ \
       crypto++-dev \
       musl-dev \
       curl-dev \
@@ -15,16 +14,18 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       make \
       pkgconf && \
     git clone https://github.com/Amitie10g/MegaFuse.git /tmp/MegaFuse && \
-    make --directory=/tmp/MegaFuse && \
-    apk del .build-deps && \
-    apk --no-cache add \
+    make --directory=/tmp/MegaFuse
+
+FROM lsiobase/alpine:3.9
+
+RUN apk --no-cache add \
       crypto++ \
       libcrypto1.1 \
       libcurl \
       freeimage \
       db-c++ \
       fuse && \
-    ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6 && \
-    cp /tmp/MegaFuse/MegaFuse /usr/bin/megafuse && \
-    rm -fr /tmp
+    ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
+
 COPY /root /
+COPY --from=builder /tmp/MegaFuse/MegaFuse /usr/bin/megafuse
