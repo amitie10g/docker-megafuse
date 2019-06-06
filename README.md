@@ -38,7 +38,12 @@ Note: `--privileged` is not longer required since Linux 4.18. However, I tested 
 
 ## Inregrating with your own Alpine-based images
 ```
-FROM amitie10g/megafuse:binaryonly AS builder
+FROM amitie10g/megafuse:binary AS builder
+COPY --from=builder /bin/megasimplesync /bin/megasimplesync
+COPY --from=builder /bin/megacli /bin/megacli
+COPY --from=builder /bin/megafuse /bin/megafuse
+COPY --from=builder /lib/libmega.la /lib/libmega.la
+COPY --from=builder /lib/libmega.so.30503.0.0 /lib/libmega.so.30503.0.0
 
 FROM <yourimage>
 RUN apk --no-cache add \
@@ -49,8 +54,9 @@ RUN apk --no-cache add \
       db-c++ \
       fuse \
       <your packages> && \
-    ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
-COPY --from=builder /usr/bin/megafuse /usr/bin/megafuse 
+    ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6 && \
+    ln -s libmega.so.30503.0.0 /lib/libmega.so && \
+    ln -s libmega.so.30503.0.0 /lib/libmega.so.30503
 ``` 
 
 ## Licensing
