@@ -26,7 +26,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
 
 FROM lsiobase/alpine:3.9
 
-RUN add --no-cache \
+RUN apk add --no-cache \
       fuse \
       c-ares \
       libcurl \
