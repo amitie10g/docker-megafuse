@@ -8,5 +8,5 @@ LOCAL_HOME=$(curl -fSs "http://metadata.google.internal/computeMetadata/v1/oslog
 CACHE_PATH="$LOCAL_HOME/cache"
 
 # Create the directories
-mkdir -p "$CONFIG_PATH"
+mkdir -p "$CACHE_PATH"
 chown -R "$PUID:$PGID" "$LOCAL_HOME"
