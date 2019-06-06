@@ -19,7 +19,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       make \
       fuse-dev && \
     git clone --depth=1 https://github.com/meganz/sdk.git /tmp/megafuse && \
-    cd /tmp/MegaFuse && \
+    cd /tmp/megafuse && \
     ./autogen.sh && \
     ./configure --with-fuse && \
     make install && \
