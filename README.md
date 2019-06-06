@@ -36,9 +36,9 @@ Note: `--privileged` is not longer required since Linux 4.18. However, I tested 
 
 ## Inregrating with your own Alpine-based images
 ```
-FROM amitie10g/megafuse:matteoserva-binaryonly AS builder
-
 FROM <yourimage>
+
+COPY --from=amitie10g/megafuse:matteoserva-binary / /
 RUN apk --no-cache add \
       crypto++ \
       libcrypto1.1 \
@@ -47,9 +47,7 @@ RUN apk --no-cache add \
       db-c++ \
       fuse \
       <your packages> && \
-    ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
-COPY --from=builder /usr/bin/megafuse /usr/bin/megafuse 
+    ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
 ``` 
-
 ## Licensing
 This source tree has been released to the **Public domain** (Unlicense).
