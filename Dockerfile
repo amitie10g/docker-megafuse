@@ -23,8 +23,15 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     ./autogen.sh && \
     ./configure --with-fuse && \
     make && \
-    make install && \
+    make DESTDIR=/tmp install && \
+    cd / && \
     rm -fr /tmp/megafuse && \
     apk del .build-deps && \
+    apk add --no-cache \
+    fuse \
+    c-ares \
+    libcurl \
+    sqlite-libs \
+    freeimage
     
 COPY /root /
