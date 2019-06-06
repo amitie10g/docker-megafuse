@@ -40,5 +40,11 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
     
 COPY /root /
-COPY --from=builder /tmp/bin/* /bin/
-COPY --from=builder /tmp/lib/* /lib/
+COPY --from=builder /tmp/bin/megasimplesync /bin/megasimplesync
+COPY --from=builder /tmp/bin/megacli /bin/megacli
+COPY --from=builder /tmp/bin/megafuse /bin/megafuse
+COPY --from=builder /tmp/lib/libmega.la /lib/libmega.la
+COPY --from=builder /tmp/lib/libmega.so.30503.0.0 /lib/libmega.so.30503.0.0
+
+RUN ln -s libmega.so /lib/libmega.so.30503.0.0 && \
+    ln -s libmega.so.30503 /lib/libmega.so.30503.0.0
