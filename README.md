@@ -11,8 +11,9 @@ An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at 
 ## Instructions
 
 ### Pull from Docker Hub
-docker pull amitie10g/megafuse:latest
-
+```
+docker pull amitie10g/megafuse:matteoserva
+```
 ### Running
 ```
 PUID=$(id -u)
@@ -21,16 +22,21 @@ PGID=$(id -g)
 USERNAME=<MEGA username>
 PASSWORD=<MEGA password>
 
+CONF_PATH=$HOME/config
+CACHE_PATH=$HOME/cache
+
 docker run -t -i -d \
 --name=megafuse \
 -e PUID=$PUID \
 -e PGID=$PGID \
 -e USERNAME=$USERNAME \
 -e PASSWORD=$PASSWORD \
+-v $CONF_PATH:/config \
+-v $CACHE_PATH:/cache \
 --device=/dev/fuse \
 --restart no \
 --privileged \
-amitie10g/megafuse:latest
+amitie10g/megafuse:matteoserva
 ```
 Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
 
