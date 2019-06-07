@@ -29,6 +29,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       --with-fuse && \
     make && \
     make DESTDIR=/tmp install
+    strip /tmp/lib/libmega.so.30503
 
 FROM lsiobase/alpine:3.9
 
@@ -41,7 +42,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       sqlite-libs \
       freeimage \
       crypto++ && \
-      ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
+      
     
 COPY /root /
 COPY --from=builder /tmp/bin/megasimplesync /tmp/bin/megacli /tmp/bin/megafuse /bin/
@@ -49,4 +50,4 @@ COPY --from=builder /tmp/lib/libmega.la /tmp/lib/libmega.so.30503.0.0 /lib/
 
 RUN ln -s libmega.so.30503.0.0 /lib/libmega.so && \
     ln -s libmega.so.30503.0.0 /lib/libmega.so.30503 && \
-    strip /lib/libmega.so.30503
+    ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
