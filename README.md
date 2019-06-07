@@ -11,7 +11,7 @@ An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at 
 ## General usage
 
 ### Before begin
-You need your Mega API client key. Go to https://mega.co.nz/#sdk and follow the instructions to get yours.
+You need your Mega API Client app key. Go to **https://mega.co.nz/#sdk**, and at the section Key management, click in **Get an app**, save it, and use the resulted API key.
 
 ### Pull from Docker Hub
 ```
@@ -66,5 +66,5 @@ The Dockerfile and scripts included inside the source tree has been released to 
 
 However, the resulting images, binaries and third party source code are subjected to the copyright from the original developers, namely,
 
-* **Matteo Serva's MegaFuse:** GNU General Public License version 2
 * **Mega SDK:** BSD 2-Clause "Simplified" License
+* **Matteo Serva's MegaFuse:** GNU General Public License version 2
