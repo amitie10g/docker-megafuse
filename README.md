@@ -21,6 +21,7 @@ PGID=$(id -g)
 
 USERNAME=<MEGA username>
 PASSWORD=<MEGA password>
+API_KEY=<Mega API key>
 
 CONF_PATH=$HOME/config
 CACHE_PATH=$HOME/cache
@@ -31,6 +32,7 @@ docker run -t -i -d \
 -e PGID=$PGID \
 -e USERNAME=$USERNAME \
 -e PASSWORD=$PASSWORD \
+-e API_KEY=$API_KEY \
 -v $CONF_PATH:/config \
 -v $CACHE_PATH:/cache \
 --device=/dev/fuse \
