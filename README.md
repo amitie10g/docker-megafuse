@@ -10,7 +10,7 @@ An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at 
 
 ## General usage
 
-### Pull from Docker Hub (available soon)
+### Pull from Docker Hub
 ```
 docker pull amitie10g/megafuse:latest
 ```
