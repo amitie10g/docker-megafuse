@@ -1,4 +1,4 @@
-# docker-megafuse
+# docker-megafuse (Matteo Serva)
 
 This is an attemp to build an Alpine-based Docker image for access [Mega](https://github.com/meganz) volumes via FUSE, using the [Matteo Serva's](https://github.com/matteoserva) [MegaFuse](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva) project.
 
