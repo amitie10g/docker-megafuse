@@ -5,10 +5,10 @@ This is an attemp to build an Alpine-based Docker image for access [Mega](https:
 An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at the [main branch](https://github.com/Amitie10g/docker-megafuse).
 
 ## Caveats
-* The username and password are passed to the container as environment variables in plain text. I'm working in a way to encrypted (or at least ofuscate) the sensitive data.
-* This implementation lacks of a configurable caching methods (at least, I don't know how to set at compile time, as this approach uses the Mega SDK source code directly). The Matteo Serva's MegaFuse project implements a configurable caching.
+* The username and password are passed to the container as environment variables and stored in the config file in plain text. Is desirable to adapt the Matteo Serva's code.
+* The code is based on older versions of the Mega SDK, so, lot of warnings are displayed at compile time under newer versions of GCC.
 
-## Instructions
+## General usage
 
 ### Pull from Docker Hub
 ```
@@ -40,7 +40,7 @@ amitie10g/megafuse:matteoserva
 ```
 Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
 
-## Inregrating with your own Alpine-based images
+### Inregrating with your own Alpine-based images
 ```
 FROM <yourimage>
 
