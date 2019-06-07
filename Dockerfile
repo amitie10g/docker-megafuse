@@ -42,9 +42,8 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       libcurl \
       sqlite-libs \
       freeimage \
-      crypto++ && \
-      
-    
+      crypto++
+
 COPY /root /
 COPY --from=builder /tmp/bin/megasimplesync /tmp/bin/megacli /tmp/bin/megafuse /bin/
 COPY --from=builder /tmp/lib/libmega.la /tmp/lib/libmega.so.30503.0.0 /lib/
