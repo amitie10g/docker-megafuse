@@ -25,7 +25,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     ./configure \
       CFLAGS="-g -Os -s -march=native -pipe" \
       CXXFLAGS="-g -Os -s -march=native -pipe" \
-      LDFLAGS="-Os -s -w" \
+      LDFLAGS="-g -Os -s -march=native -pipe -w" \
       --with-fuse && \
     make && \
     make DESTDIR=/tmp install
