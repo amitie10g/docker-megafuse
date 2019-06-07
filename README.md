@@ -1,8 +1,8 @@
-# docker-megafuse (Matteo Serva)
+# docker-megafuse
 
 This is an attemp to build an Alpine-based Docker image for access [Mega](https://github.com/meganz) volumes via FUSE, using the [Matteo Serva's](https://github.com/matteoserva) [MegaFuse](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva) project.
 
-An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at the [main branch](https://github.com/Amitie10g/docker-megafuse).
+An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at a [dedicated branch](https://github.com/Amitie10g/docker-megafuse).
 
 ## Caveats
 * The username and password are passed to the container as environment variables and stored in the config file in plain text. Is desirable to adapt the Matteo Serva's code.
