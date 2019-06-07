@@ -40,7 +40,8 @@ amitie10g/megafuse:latest
 ```
 Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
 
-### Inregrating with your own Alpine-based images
+## Inregrating with your own Alpine-based images
+There a variants with just the binaries generated from this project and not anything else. Them are suitable for integration with other projects without downloading the full image.
 ```
 FROM <yourimage>
 
