@@ -10,6 +10,9 @@ An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at 
 
 ## General usage
 
+### Before begin
+You need your Mega API client key. Go to https://mega.co.nz/#sdk and follow the instructions to get yours.
+
 ### Pull from Docker Hub
 ```
 docker pull amitie10g/megafuse:latest
@@ -21,7 +24,7 @@ PGID=$(id -g)
 
 USERNAME=<MEGA username>
 PASSWORD=<MEGA password>
-API_KEY=<Mega API key>
+APIKEY=<Mega API key>
 
 CONF_PATH=$HOME/config
 CACHE_PATH=$HOME/cache
@@ -32,7 +35,7 @@ docker run -t -i -d \
 -e PGID=$PGID \
 -e USERNAME=$USERNAME \
 -e PASSWORD=$PASSWORD \
--e API_KEY=$API_KEY \
+-e APIKEY=$APIKEY \
 -v $CONF_PATH:/config \
 -v $CACHE_PATH:/cache \
 --device=/dev/fuse \
@@ -63,5 +66,5 @@ The Dockerfile and scripts included inside the source tree has been released to 
 
 However, the resulting images, binaries and third party source code are subjected to the copyright from the original developers, namely,
 
-* **Mega SDK:** BSD 2-Clause "Simplified" License
 * **Matteo Serva's MegaFuse:** GNU General Public License version 2
+* **Mega SDK:** BSD 2-Clause "Simplified" License
