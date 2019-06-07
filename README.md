@@ -6,9 +6,9 @@ An image based on the [Matteo Serva's](https://github.com/matteoserva) [MegaFuse
 
 ## General usage
 
-### Pull from Docker Hub
+### Pull from Docker Hub (available soon)
 ```
-docker pull amitie10g/megafuse:latest
+docker pull amitie10g/megafuse:mega
 ```
 ### Running
 ```
@@ -27,7 +27,7 @@ docker run -t -i -d \
 --device=/dev/fuse \
 --restart no \
 --privileged \
-amitie10g/megafuse:latest
+amitie10g/megafuse:mega
 ```
 Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
 
@@ -35,7 +35,7 @@ Note: `--privileged` is not longer required since Linux 4.18. However, I tested 
 ```
 FROM <yourimage>
 
-COPY --from=amitie10g/megafuse:binary / /
+COPY --from=amitie10g/megafuse:mega-binary / /
 RUN apk --no-cache add \
       crypto++ \
       libcrypto1.1 \
