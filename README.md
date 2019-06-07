@@ -1,8 +1,8 @@
-# docker-megafuse (Mega SDK)
+# docker-megafuse
 
 This is an attemp to build an Alpine-based Docker image for access [Mega](https://github.com/meganz) volumes via FUSE, using [its SDK](https://github.com/meganz/sdk).
 
-An image based on the [Matteo Serva's](https://github.com/matteoserva) [MegaFuse project](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva) is also available at a [dedicated branch](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva).
+An image based on the [Matteo Serva's](https://github.com/matteoserva) [MegaFuse project](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva) is also available at the [main branch](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva).
 
 ## General usage
 
