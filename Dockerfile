@@ -48,4 +48,5 @@ COPY --from=builder /tmp/bin/megasimplesync /tmp/bin/megacli /tmp/bin/megafuse /
 COPY --from=builder /tmp/lib/libmega.la /tmp/lib/libmega.so.30503.0.0 /lib/
 
 RUN ln -s libmega.so.30503.0.0 /lib/libmega.so && \
-    ln -s libmega.so.30503.0.0 /lib/libmega.so.30503
+    ln -s libmega.so.30503.0.0 /lib/libmega.so.30503 && \
+    strip /lib/libmega.so.30503
