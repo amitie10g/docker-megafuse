@@ -51,6 +51,7 @@ RUN apk --no-cache add \
 ``` 
 ## Licensing
 The Dockerfile and scripts included inside the source tree has been released to the **Public domain** (Unlicense).
+
 However, the resulting images, binaries and third party source code are subjected to the copyright from the original developers, namely,
 
 * **Mega SDK:** BSD 2-Clause "Simplified" License
