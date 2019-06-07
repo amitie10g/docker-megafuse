@@ -6,7 +6,7 @@ An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at 
 
 ## Caveats
 * The username and password are passed to the container as environment variables in plain text. I'm working in a way to encrypted (or at least ofuscate) the sensitive data.
-* This implementation lacks of a configurable caching methods (at least, I don't know how to set at compile time, as this approach uses the Mega SDK source code directly. The Matteo Serva's MegaFuse project implements a configurable caching.
+* This implementation lacks of a configurable caching methods (at least, I don't know how to set at compile time, as this approach uses the Mega SDK source code directly). The Matteo Serva's MegaFuse project implements a configurable caching.
 
 ## Instructions
 
