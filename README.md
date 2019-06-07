@@ -44,7 +44,7 @@ Note: `--privileged` is not longer required since Linux 4.18. However, I tested 
 ```
 FROM <yourimage>
 
-COPY --from=amitie10g/megafuse:matteoserva-binary / /
+COPY --from=amitie10g/megafuse:binary / /
 RUN apk --no-cache add \
       crypto++ \
       libcrypto1.1 \
