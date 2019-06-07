@@ -28,8 +28,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       LDFLAGS="-g -Os -s -march=native -pipe -w" \
       --with-fuse && \
     make && \
-    make DESTDIR=/tmp install
-    strip /tmp/lib/libmega.so.30503
+    make DESTDIR=/tmp install && \
+    strip /tmp/bin/* && \
+    strip /tmp/lib/*
 
 FROM lsiobase/alpine:3.9
 
