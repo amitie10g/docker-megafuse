@@ -1,4 +1,4 @@
-# docker-megafuse
+# docker-megafuse (Mega SDK)
 
 This is an attemp to build an Alpine-based Docker image for access [Mega](https://github.com/meganz) volumes via FUSE, using [its SDK](https://github.com/meganz/sdk).
 
