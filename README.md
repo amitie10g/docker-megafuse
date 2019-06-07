@@ -4,6 +4,10 @@ This is an attemp to build an Alpine-based Docker image for access [Mega](https:
 
 An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at the [main branch](https://github.com/Amitie10g/docker-megafuse).
 
+## Caveats
+* The username and password are passed to the container as environment variables in plain text. I'm working in a way to encrypted (or at least ofuscate) the sensitive data.
+* This implementation lacks of a configurable caching methods (at least, I don't know how to set at compile time, as this approach uses the Mega SDK source code directly. The Matteo Serva's MegaFuse project implements a configurable caching.
+
 ## Instructions
 
 ### Pull from Docker Hub
@@ -14,21 +18,15 @@ docker pull amitie10g/megafuse:latest
 PUID=$(id -u)
 PGID=$(id -g)
 
-CONF_PATH=$HOME/config
-CACHE_PATH=$HOME/cache
-
 USERNAME=<MEGA username>
-Password=<MEGA password>
-
-mkdir -p $CONF_PATH $CACHE_PATH
+PASSWORD=<MEGA password>
 
 docker run -t -i -d \
 --name=megafuse \
 -e PUID=$PUID \
 -e PGID=$PGID \
 -e USERNAME=$USERNAME \
--e PASSWORD=$PASSWORD
--v $CACHE_PATH:/cache \
+-e PASSWORD=$PASSWORD \
 --device=/dev/fuse \
 --restart no \
 --privileged \
