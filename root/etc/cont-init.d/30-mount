@@ -8,6 +8,6 @@ chown abc:abc \
 if [ -n "$USERNAME" ] && [ -n "$PASSWORD" ]; then
   s6-setuidgid abc megafuse $USERNAME $PASSWORD /mega
 else
-  echo "Fatal: You must provide the username and password via envirnment variables."
+  echo "Fatal: You must provide the username and password via environment variables."
   exit 1
 fi
