@@ -19,39 +19,13 @@ You need your Mega API Client app key. Go to **https://mega.co.nz/#sdk**, and at
 docker pull amitie10g/megafuse:latest
 ```
 ### Running
-```
-PUID=$(id -u)
-PGID=$(id -g)
+Edit either `run.sh`` or `docker-compose.yml`, and then run the script, or use docker-compose.
 
-USERNAME=<MEGA username>
-PASSWORD=<MEGA password>
-APIKEY=<Mega API key>
-
-CONF_PATH=$HOME/config
-CACHE_PATH=$HOME/cache
-
-docker run -t -i -d \
---name=megafuse \
--e PUID=$PUID \
--e PGID=$PGID \
--e USERNAME=$USERNAME \
--e PASSWORD=$PASSWORD \
--e APIKEY=$APIKEY \
--v $CONF_PATH:/config \
--v $CACHE_PATH:/cache \
---device=/dev/fuse \
---restart no \
---privileged \
-amitie10g/megafuse:latest
-```
-Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
+Note: `privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
 
 ## Inregrating with your own Alpine-based images
-There a variants with just the binaries generated from this project and not anything else. Them are suitable for integration with other projects without downloading the full image.
 ```
 FROM <yourimage>
-
-COPY --from=amitie10g/megafuse:binary / /
 RUN apk --no-cache add \
       crypto++ \
       libcrypto1.1 \
@@ -61,6 +35,7 @@ RUN apk --no-cache add \
       fuse \
       <your packages> && \
     ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
+COPY --from=amitie10g/megafuse:latest /usr/bin/megafuse /usr/bin/megafuse
 ``` 
 ## Licensing
 The Dockerfile and scripts included inside the source tree has been released to the **Public domain** (Unlicense).
