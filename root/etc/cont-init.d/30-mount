@@ -8,13 +8,6 @@ chown abc:abc \
 
 # Generate the config file
 genconfig(){
-
-	# This is a workarround for the issue when prompting under Alpine
-	[ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
-	[ -z "$PASSWORD" ] && read -rsp "Password: " PASSWORD || exit 1
-	echo "Create your appkey at https://mega.co.nz/#sdk"
-	[ -z "$APPKEY" ] && read   -rp "App  key: " APPKEY || exit 1
-
 	cat << EOF > /config/megafuse.conf
 ###################
 # Config file, please remove the # in front of the variable when you edit it: "#USERNAME" --> "USERNAME"
@@ -37,23 +30,16 @@ start(){
 }
 
 if [ -f /config/megafuse.conf ]; then
-	if [ "$1" == "-f" ]; then
-		echo "Notice: regenerating configuration." 2>&1
-		genconfig
-	else
-		echo "Notice: using existing configuration." 2>&1
-	fi
 	chown abc:abc /config/megafuse.conf
 	start
 else
-	if [ "$1" == "-f" ] || ([ -n "$USERNAME" ] && [ -n "$PASSWORD" ] && [ -n "$APPKEY" ]); then
-		echo "Notice: regenerating configuration." 2>&1
+	if ([ -n "$USERNAME" ] && [ -n "$PASSWORD" ] && [ -n "$APPKEY" ]); then
+		echo "Notice: generating configuration." 2>&1
 		genconfig
 		chown abc:abc /config/megafuse.conf
 		start
 	else
-		echo "Fatal: No config file found. Please run '/etc/cont-init.d/30-mount -f' or provide the required parameters"
-		echo "from the envirnment variables in order to get a working config file." 2>&1
+		echo "Fatal: No config file found. Please provide the required parameters from the envirnment variables" 2>&1
 		# Leave commented in order to keep the container running and allow to run '/start.sh -i'
 		#exit 1
 	fi
