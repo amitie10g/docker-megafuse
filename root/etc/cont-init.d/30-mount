@@ -1,8 +1,10 @@
 #!/bin/bash
 
-mkdir -p /mega
-chown abc:abc \
-	/cache \
+mkdir -p \
+	/config/cache \
+	/mega
+
+chown -R abc:abc \
 	/config \
 	/mega
 
@@ -19,7 +21,7 @@ APPKEY = $APPKEY
 #### you can specify a mountpoint here, only absolute paths are supported.
 MOUNTPOINT = /mega
 #### path for the cached files; /tmp is the default, change it if your /tmp is small
-CACHEPATH = /cache
+CACHEPATH = /config/cache
 EOF
 
 }
