@@ -19,7 +19,7 @@ You need your Mega API Client app key. Go to **https://mega.co.nz/#sdk**, and at
 docker pull amitie10g/megafuse:latest
 ```
 ### Running
-Edit either `run.sh`` or `docker-compose.yml`, and then run the script, or use docker-compose.
+Edit either `run.sh` or `docker-compose.yml`, and then run the script, or use docker-compose.
 
 Note: `privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
 
