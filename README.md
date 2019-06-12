@@ -5,7 +5,8 @@ This is an attemp to build an Alpine-based Docker image for access [Mega](https:
 An image based on the [Mega SDK](https://github.com/meganz/sdk) is available at a [dedicated branch](https://github.com/Amitie10g/docker-megafuse).
 
 ## Caveats
-* The username and password are passed to the container as environment variables and stored in the config file in plain text. Is desirable to ofuscate that in a some way.
+* The application prompts for the user and password. This works fine under Ubuntu-based container; however, there are issues under Alpine, so, I created a scripts to prompt for user, password and API key as workarround.
+* The username and password may also passed to the container as environment variables and stored in the config file in plain text. Is desirable to ofuscate that in a some way.
 * The code is based on older versions of the Mega SDK, so, lot of warnings are displayed at compile time under newer versions of GCC.
 
 ## General usage
