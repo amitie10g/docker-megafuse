@@ -4,13 +4,7 @@ This is an attemp to build an Alpine-based Docker image for access [Mega](https:
 
 An image based on the [Matteo Serva's](https://github.com/matteoserva) [MegaFuse project](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva) is also available at the [main branch](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva).
 
-## General usage
-
-### Pull from Docker Hub
-```
-docker pull amitie10g/megafuse:mega
-```
-### Running
+## Running
 ```
 PUID=$(id -u)
 PGID=$(id -g)
