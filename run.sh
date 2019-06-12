@@ -6,7 +6,6 @@ PASSWORD=<MEGA password>
 APIKEY=<Mega API key>
 
 CONF_PATH=$HOME/config
-CACHE_PATH=$HOME/cache
 
 docker run -t -i -d \
 --name=megafuse \
