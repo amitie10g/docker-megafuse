@@ -5,10 +5,11 @@ chown abc:abc \
 	/cache \
 	/config \
 	/mega
-	
+
+# Generate the config file
 genconfig(){
 
-	# This is a workarround for the filling prompt under Alpine
+	# This is a workarround for the issue when prompting under Alpine
 	[ -z "$USERNAME" ] && read -rp "Username: " USERNAME || exit 1
 	[ -z "$PASSWORD" ] && read -rsp "Password: " PASSWORD || exit 1
 	echo "Create your appkey at https://mega.co.nz/#sdk"
