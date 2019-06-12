@@ -4,44 +4,43 @@ This is an attemp to build an Alpine-based Docker image for access [Mega](https:
 
 An image based on the [Matteo Serva's](https://github.com/matteoserva) [MegaFuse project](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva) is also available at the [main branch](https://github.com/Amitie10g/docker-megafuse/tree/matteoserva).
 
-## Running
-```
-PUID=$(id -u)
-PGID=$(id -g)
+## General usage
 
-USERNAME=<MEGA username>
-PASSWORD=<MEGA password>
+### Before begin
+You need your Mega API Client app key. Go to **https://mega.co.nz/#sdk**, and at the section Key management, click in **Get an app**, save it, and use the resulted API key.
 
-docker run -t -i -d \
---name=megafuse \
--e PUID=$PUID \
--e PGID=$PGID \
--e USERNAME=$USERNAME \
--e PASSWORD=$PASSWORD \
---device=/dev/fuse \
---restart no \
---privileged \
-amitie10g/megafuse:mega
-```
-Note: `--privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
+### Running
+Edit either `run.sh` or `docker-compose.yml`, and then run the script, or use docker-compose.
+
+Note: `privileged` is not longer required since Linux 4.18. However, I tested in my Ubuntu 19.04 (Linux 5.0), and I got `fusermount: mount failed: Operation not permitted`, so, it should stay enabled.
 
 ## Inregrating with your own Alpine-based images
 There a variants with just the binaries generated from this project and not anything else. Them are suitable for integration with other projects without downloading the full image.
 ```
+FROM amitie10g/megafuse:mega AS builder
+
 FROM <yourimage>
 
-COPY --from=amitie10g/megafuse:mega-binary / /
-RUN apk --no-cache add \
-      crypto++ \
-      libcrypto1.1 \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
+    apk update && \
+    apk add --no-cache \
+      c-ares \
       libcurl \
+      sqlite-libs \
       freeimage \
-      db-c++ \
+      crypto++
       fuse \
       <your packages> && \
     ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6 && \
     ln -s libmega.so.30503.0.0 /lib/libmega.so && \
     ln -s libmega.so.30503.0.0 /lib/libmega.so.30503
+
+COPY --from=builder /bin/megafuse /bin/megacli /bin/megasimplesync /bin/
+COPY --from=builder /lib/libmega.so.30503.0.0 /lib/libmega.la /lib/
+
+RUN ln -s libmega.so.30503.0.0 /lib/libmega.so && \
+    ln -s libmega.so.30503.0.0 /lib/libmega.so.30503 && \
+    ln -s libcryptopp.so /usr/lib/libcryptopp.so.5.6
 ``` 
 ## Licensing
 The Dockerfile and scripts included inside the source tree has been released to the **Public domain** (Unlicense).
