@@ -16,7 +16,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     git clone --depth=1 --branch=testing https://github.com/Amitie10g/MegaFuse.git /tmp/MegaFuse && \
     make --directory=/tmp/MegaFuse
 
-FROM lsiobase/alpine:3.9
+FROM lsiobase/alpine:latest
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
     apk update && \
