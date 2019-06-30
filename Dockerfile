@@ -35,7 +35,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       /tmp/bin/megacli \
       /tmp/bin/megafuse
 
-FROM lsiobase/alpine:3.10
+FROM lsiobase/alpine:latest
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
     apk update && \
