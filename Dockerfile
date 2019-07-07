@@ -30,10 +30,8 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
     make && \
     make DESTDIR=/tmp install && \
     strip \
-      /tmp/lib/libmega.so.30503.0.0 \
-      /tmp/bin/megasimplesync \
-      /tmp/bin/megacli \
-      /tmp/bin/megafuse
+      /tmp/lib/* \
+      /tmp/bin/*
 
 FROM lsiobase/alpine:latest
 
