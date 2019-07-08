@@ -1,8 +1,7 @@
 FROM frolvlad/alpine-gxx AS builder
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
-    apk update && \
-    apk add --no-cache \
+    apk --update --no-cache add \
       git \
       doxygen \
       file \
