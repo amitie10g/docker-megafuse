@@ -28,9 +28,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       --with-fuse && \
     make && \
     make DESTDIR=/tmp install && \
-    strip \
-      /tmp/lib/* \
-      /tmp/bin/*
+    strip /tmp/lib/libmega.so.30600.0.0
 
 FROM lsiobase/alpine:latest
 
@@ -45,8 +43,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/reposi
       crypto++
 
 COPY /root /
-COPY --from=builder /tmp/bin/megasimplesync /tmp/bin/megacli /tmp/bin/megafuse /bin/
-COPY --from=builder /tmp/lib/libmega.la /tmp/lib/libmega.so.30503.0.0 /lib/
+COPY --from=builder /tmp/bin /tmp/lib /
 
 RUN ln -s libmega.so.30503.0.0 /lib/libmega.so && \
     ln -s libmega.so.30503.0.0 /lib/libmega.so.30503 && \
